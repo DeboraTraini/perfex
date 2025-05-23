@@ -7,3 +7,6 @@ git add .
 git commit -m "Prima versione"
 git branch -M main
 git push -u origin main
+git add codemagic.yaml
+git commit -m "Add Codemagic iOS build workflow"
+git push
