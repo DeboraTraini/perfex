@@ -100,7 +100,7 @@ ThemeData dark = ThemeData(
     fillColor: ColorResources.inputColorDark,
     hintStyle: const TextStyle(color: Colors.white),
   ),
-  cardTheme: const CardTheme(color: Colors.black),
+  cardTheme: const CardThemeData(color: Colors.black),
   cardColor: ColorResources.cardColorDark,
   drawerTheme: const DrawerThemeData(
       backgroundColor: ColorResources.screenBgColorDark,
