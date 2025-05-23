@@ -1,0 +1,31 @@
+name: example
+description: A simple Flutter project demonstrating how to use the Date Field package
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.1.0 <4.0.0"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  date_field:
+    path: ../
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.6
+
+  intl: '>=0.18.0 <0.20.0'
+
+
+flutter:
+  uses-material-design: true
