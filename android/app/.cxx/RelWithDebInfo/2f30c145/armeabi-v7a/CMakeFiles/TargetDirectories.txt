@@ -1,0 +1,2 @@
+C:/Users/Debora/Desktop/flutex_admin/flutex_admin/android/app/.cxx/RelWithDebInfo/2f30c145/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Debora/Desktop/flutex_admin/flutex_admin/android/app/.cxx/RelWithDebInfo/2f30c145/armeabi-v7a/CMakeFiles/rebuild_cache.dir
