@@ -9,13 +9,13 @@ workflows:
         CERTIFICATE_PASSWORD: "debbere"
     code_signing:
       certificates:
-        - name: "iOS Distribution"
+        - name: "iOS"
           type: "distribution"
           certificate: $IOS_CERTIFICATE
           password: $CERTIFICATE_PASSWORD
           source: environment
       provisioning_profiles:
-        - name: "Horizone AdHoc"
+        - name: "Horizone_AdHoc_Profile"
           profile: $IOS_PROVISIONING_PROFILE
           source: environment
     scripts:
