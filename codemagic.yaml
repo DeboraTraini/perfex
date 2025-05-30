@@ -1,26 +1,20 @@
 workflows:
-  ios-build:
-    name: iOS Build (AdHoc)
+  ios-release-build:
+    name: iOS Release Build
     environment:
-      vars:
-        XCODE_PROJECT: "ios/Runner.xcodeproj"
-        XCODE_SCHEME: "Runner"
-      xcode: latest
+      ios_signing:
+        certificates:
+          - certificate_id: "abcd1234-5678-90ef-ghij-klmnopqrstuv" # <-- ID certificato .p12
+            certificate_password: "TUA_PASSWORD_DEL_P12"
+        provisioning_profiles:
+          - bundle_id: "com.horizone.perfex" # <-- Tuo Bundle ID registrato
+            name: "Horizone_AdHoc_Profile"   # <-- Nome esatto del provisioning su Codemagic
     scripts:
-      - name: Set up code signing settings on Xcode project
+      - name: Get dependencies
         script: |
-          xcode-project use-profiles
-      - name: Build .ipa
+          flutter pub get
+      - name: Build iOS release
         script: |
-          xcodebuild -project "$XCODE_PROJECT" \
-            -scheme "$XCODE_SCHEME" \
-            -configuration Release \
-            -archivePath $CM_BUILD_DIR/Runner.xcarchive \
-            archive
-
-          xcodebuild -exportArchive \
-            -archivePath $CM_BUILD_DIR/Runner.xcarchive \
-            -exportOptionsPlist ios/ExportOptions.plist \
-            -exportPath $CM_BUILD_DIR/export
+          flutter build ipa --release
     artifacts:
-      - $CM_BUILD_DIR/export/*.ipa
+      - build/ios/ipa/*.ipa
