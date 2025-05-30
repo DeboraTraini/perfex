@@ -7,8 +7,6 @@ workflows:
       vars:
         BUNDLE_ID: "com.perfex.admin"
         CERTIFICATE_PASSWORD: "debbere"
-        IOS_CERTIFICATE: EnormeStringaBase64DelP12
-        IOS_PROVISIONING_PROFILE: EnormeStringaBase64DelMobileProvision
       ios_signing:
         certificates:
           - $IOS_CERTIFICATE
