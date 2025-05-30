@@ -2,35 +2,25 @@ workflows:
   ios-release-build:
     name: iOS Release Build
     environment:
-      flutter: stable
-      xcode: latest
       vars:
-        BUNDLE_ID: com.perfex.admin
+        BUNDLE_ID: "com.perfex.admin"
+        CERTIFICATE_PASSWORD: "debbere"
       ios_signing:
         certificates:
-          - name: ios_certificate
-            file_path: certificates/ios_distribution.p12
-            password: debbere
+          - name: ios_distribution
+            certificate: >
+              <INCOLLA QUI IL CONTENUTO DI p12.txt TUTTO SU UNA RIGA>
+            password: $CERTIFICATE_PASSWORD
         provisioning_profiles:
-          - name: ios_profile
-            file_path: certificates/Horizone_AdHocmobileprovision.mobileprovision
-            bundle_id: $BUNDLE_ID
-
+          - name: ios_provisioning
+            profile: >
+              <INCOLLA QUI IL CONTENUTO DI mobileprovision.txt TUTTO SU UNA RIGA>
     scripts:
-      - name: Clean build
-        script: |
-          flutter clean
-      - name: Get packages
+      - name: Install dependencies
         script: |
           flutter pub get
-      - name: Build IPA
+      - name: Build ipa
         script: |
-          flutter build ipa --release --build-name=1.0.0 --build-number=1
-
+          flutter build ipa --release --export-options-plist=ExportOptions.plist
     artifacts:
       - build/ios/ipa/*.ipa
-
-    publishing:
-      email:
-        recipients:
-          - deboratraini@gmail.com
