@@ -4,19 +4,14 @@ workflows:
     environment:
       flutter: stable
       xcode: latest
-      vars:
-        BUNDLE_ID: "com.perfex.admin"
-        CERTIFICATE_PASSWORD: "debbere"
     scripts:
       - name: Install dependencies
         script: |
           flutter pub get
-      - name: Archive app
-        script: |
-          flutter build ios --release --no-codesign
       - name: Build IPA
         script: |
           flutter build ipa --export-options-plist=ios/ExportOptions.plist
     artifacts:
       - build/**/**/*.ipa
       - build/**/**/*.xcarchive
+
