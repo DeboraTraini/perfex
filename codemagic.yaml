@@ -4,8 +4,10 @@ workflows:
     environment:
       ios_signing:
         certificates:
-          - certificate_id: "QUI_IL_TUO_CERTIFICATE_ID"
+          - certificate_id: "INSERISCI_L_ID_DEL_CERTIFICATO_P12"
             certificate_password: "debbere"
+            # 🔽 Collega al target Runner qui sotto
+            target: "Runner"
         provisioning_profiles:
           Runner:
             bundle_id: "com.perfex.admin"
