@@ -3,9 +3,9 @@ workflows:
     name: iOS Release Build
     environment:
       ios_signing:
-        certificates:
-          - certificate_id: ios
-            certificate_password: debbere
+        certificate_id: ios
+        certificate_password: debbere
+        profile_reference: Horizone_AdHoc_Profile
         provisioning_profiles:
           - profile_reference: Horizone_AdHoc_Profile
             bundle_id: com.perfex.admin
@@ -19,4 +19,5 @@ workflows:
           flutter build ipa --release
     artifacts:
       - build/ios/ipa/*.ipa
+
 
