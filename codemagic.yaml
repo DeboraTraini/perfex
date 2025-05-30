@@ -2,16 +2,14 @@ workflows:
   ios-release-build:
     name: iOS Release Build
     environment:
-      vars:
-        FLUTTER_BUILD_MODE: release
       ios_signing:
         certificates:
-          - certificate_id: "abcd1234-5678-90ef-ghij-klmnopqrstuv" # <-- tuo certificato
+          - certificate_id: "QUI_IL_TUO_CERTIFICATE_ID"
             certificate_password: "debbere"
         provisioning_profiles:
-          - name: "Horizone_AdHoc_Profile" # <-- nome profilo su Codemagic
-            bundle_id: "com.perfex.admin" # <-- tuo vero bundle ID
-            target: "Runner" # <-- importante! specifica il target
+          Runner:
+            bundle_id: "com.perfex.admin"
+            name: "Horizone_AdHoc_Profile"
     scripts:
       - name: Get dependencies
         script: |
