@@ -4,13 +4,12 @@ workflows:
     environment:
       ios_signing:
         certificates:
-          - certificate_id: ios
-            certificate_password: debbere
+          - certificate_id: ios           # Nome del certificato .p12 caricato su Codemagic
+            certificate_password: debbere # Password del file .p12
         provisioning_profiles:
-          - name: Horizone_AdHoc_Profile
-            bundle_id: com.perfex.admin
+          - bundle_id: com.perfex.admin   # Bundle ID della tua app
+            name: Horizone_AdHoc_Profile  # Nome del provisioning profile caricato su Codemagic
             target: Runner
-            profile_reference: Horizone_AdHoc_Profile
     scripts:
       - name: Install dependencies
         script: |
@@ -20,3 +19,4 @@ workflows:
           flutter build ipa --release
     artifacts:
       - build/ios/ipa/*.ipa
+
