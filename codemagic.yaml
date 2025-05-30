@@ -7,11 +7,11 @@ workflows:
       vars:
         BUNDLE_ID: "com.perfex.admin"
         CERTIFICATE_PASSWORD: "debbere"
-      ios_signing:
-        certificates:
-          - $IOS_CERTIFICATE
-        provisioning_profiles:
-          - $IOS_PROVISIONING_PROFILE
+    ios_signing:
+      certificates:
+        - $IOS_CERTIFICATE
+      provisioning_profiles:
+        - $IOS_PROVISIONING_PROFILE
     scripts:
       - name: Install dependencies
         script: |
