@@ -8,7 +8,7 @@ workflows:
         BUNDLE_ID: com.perfex.admin
         CERTIFICATE_PASSWORD: debbere
       ios_signing:
-        certificate: ios  # <- nome esatto caricato su Codemagic
+        certificate: iOS  # <- nome esatto caricato su Codemagic
         certificate_password: debbere
         provisioning_profile: Horizone_AdHoc_Profile # <- nome esatto caricato su Codemagic
 
