@@ -7,14 +7,9 @@ workflows:
         CERTIFICATE_PASSWORD: "debbere"
       ios_signing:
         certificates:
-          - name: ios_distribution
-            certificate: >
-              <INCOLLA QUI IL CONTENUTO DI p12.txt TUTTO SU UNA RIGA>
-            password: $CERTIFICATE_PASSWORD
+          - ios_distribution.p12
         provisioning_profiles:
-          - name: ios_provisioning
-            profile: >
-              <INCOLLA QUI IL CONTENUTO DI mobileprovision.txt TUTTO SU UNA RIGA>
+          - Horizone_AdHocmobileprovision.mobileprovision
     scripts:
       - name: Install dependencies
         script: |
