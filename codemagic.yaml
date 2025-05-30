@@ -6,14 +6,12 @@ workflows:
         APP_ID: "com.perfex.admin"
         BUNDLE_ID: "com.perfex.admin"
         CERTIFICATE_PASSWORD: "debbere"
-        PROVISIONING_PROFILE_NAME: "Horizone_AdHoc_Profile"
-        CERTIFICATE_NAME: "ios"
       ios_signing:
         certificates:
-          - certificate_name: ios
+          - certificate_id: ios
             password: debbere
         provisioning_profiles:
-          - name: Horizone_AdHoc_Profile
+          - profile: Horizone_AdHoc_Profile.mobileprovision
             bundle_id: com.perfex.admin
     scripts:
       - name: Install dependencies
