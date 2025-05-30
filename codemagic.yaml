@@ -9,7 +9,7 @@ workflows:
         certificates:
           - ios_distribution.p12
         provisioning_profiles:
-          - Horizone_AdHocmobileprovision.mobileprovision
+          - Horizone_AdHoc_Profile
     scripts:
       - name: Install dependencies
         script: |
