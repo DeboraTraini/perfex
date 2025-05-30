@@ -5,14 +5,15 @@ workflows:
       flutter: stable
       xcode: latest
       vars:
-        CERTIFICATE_PASSWORD: debbere
         BUNDLE_ID: com.perfex.admin
       ios_signing:
         certificates:
-          - certificate_name: iOS
-            certificate_password: $CERTIFICATE_PASSWORD
+          - name: ios_certificate
+            file_path: certificates/ios_distribution.p12
+            password: debbere
         provisioning_profiles:
-          - profile_name: Horizone_AdHoc_Profile
+          - name: ios_profile
+            file_path: certificates/Horizone_AdHocmobileprovision.mobileprovision
             bundle_id: $BUNDLE_ID
 
     scripts:
