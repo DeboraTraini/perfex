@@ -7,14 +7,13 @@ workflows:
       vars:
         BUNDLE_ID: "com.perfex.admin"
         CERTIFICATE_PASSWORD: "debbere"
+        IOS_CERTIFICATE: EnormeStringaBase64DelP12
+        IOS_PROVISIONING_PROFILE: EnormeStringaBase64DelMobileProvision
       ios_signing:
         certificates:
-          - source: environment
-            certificate: $IOS_CERTIFICATE
-            password: $CERTIFICATE_PASSWORD
+          - $IOS_CERTIFICATE
         provisioning_profiles:
-          - source: environment
-            profile: $IOS_PROVISIONING_PROFILE
+          - $IOS_PROVISIONING_PROFILE
     scripts:
       - name: Install dependencies
         script: |
@@ -24,4 +23,5 @@ workflows:
           flutter build ipa --export-options-plist=ios/ExportOptions.plist
     artifacts:
       - build/ios/ipa/*.ipa
+
 
