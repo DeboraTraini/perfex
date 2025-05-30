@@ -4,7 +4,7 @@ workflows:
     environment:
       flutter: stable
       xcode: latest
-      ios_signing:
+    ios_signing:
         certificates:
           - filePath: ios_signing/ios_distribution.p12
             password: debbere
