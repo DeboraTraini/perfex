@@ -7,7 +7,7 @@ workflows:
         CERTIFICATE_PASSWORD: "debbere"
       ios_signing:
         certificates:
-          - ios_distribution.p12
+          - iOS
         provisioning_profiles:
           - Horizone_AdHoc_Profile
     scripts:
