@@ -5,12 +5,15 @@ workflows:
       flutter: stable
       xcode: latest
       vars:
-        BUNDLE_ID: com.perfex.admin
         CERTIFICATE_PASSWORD: debbere
+        BUNDLE_ID: com.perfex.admin
       ios_signing:
-        certificate: iOS  # <- nome esatto caricato su Codemagic
-        certificate_password: debbere
-        provisioning_profile: Horizone_AdHoc_Profile # <- nome esatto caricato su Codemagic
+        certificates:
+          - certificate_name: iOS
+            certificate_password: $CERTIFICATE_PASSWORD
+        provisioning_profiles:
+          - profile_name: Horizone_AdHoc_Profile
+            bundle_id: $BUNDLE_ID
 
     scripts:
       - name: Clean build
@@ -19,9 +22,9 @@ workflows:
       - name: Get packages
         script: |
           flutter pub get
-      - name: Build iOS release
+      - name: Build IPA
         script: |
-          flutter build ipa --release
+          flutter build ipa --release --build-name=1.0.0 --build-number=1
 
     artifacts:
       - build/ios/ipa/*.ipa
