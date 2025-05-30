@@ -4,6 +4,12 @@ workflows:
     environment:
       flutter: stable
       xcode: latest
+      ios_signing:
+        certificates:
+          - filePath: ios_signing/ios_distribution.p12
+            password: debbere
+        provisioning_profiles:
+          - filePath: ios_signing/Horizone_AdHoc_Profile.mobileprovision
     scripts:
       - name: Install dependencies
         script: |
@@ -14,4 +20,5 @@ workflows:
     artifacts:
       - build/**/**/*.ipa
       - build/**/**/*.xcarchive
+
 
