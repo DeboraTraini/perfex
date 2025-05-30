@@ -18,7 +18,7 @@ workflows:
             group: debug
             filePath: certificates/ios_distribution.p12
         provisioning_profiles:
-          - name: Horizone_AdHoc_Profile
+          - name: ios_provisioning_profile
             type: ad-hoc
             source: file
             group: debug
