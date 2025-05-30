@@ -4,20 +4,21 @@ workflows:
     environment:
       vars:
         BUNDLE_ID: "com.perfex.admin"
-        CERTIFICATE_PASSWORD: $CERTIFICATE_PASSWORD
-      groups:
-        - ios_signing_group
       ios_signing:
-        certificate_base64: $P12_BASE64
-        certificate_password: $CERTIFICATE_PASSWORD
-        provisioning_profile_base64: $MOBILEPROVISION_BASE64
-        profile_reference: Horizone_AdHoc_Profile
-        target: Runner
+        certificates:
+          - certificate: $IOS_CERTIFICATE
+            password: $CERTIFICATE_PASSWORD
+            type: distribution
+        provisioning_profiles:
+          - name: Horizone_AdHoc_Profile
+            profile: $IOS_PROVISIONING_PROFILE
+            type: ad-hoc
+            bundle_id: "com.perfex.admin"
     scripts:
       - name: Install dependencies
         script: |
           flutter pub get
-      - name: Build iOS
+      - name: Build IPA
         script: |
           flutter build ios --release
     artifacts:
