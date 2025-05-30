@@ -15,4 +15,8 @@ workflows:
         script: |
           flutter build ipa --export-options-plist=ios/ExportOptions.plist --no-codesign
     artifacts:
-      - build/ios/ipa/*.ipa
+      artifacts:
+      - build/**/Runner.app
+      - build/**/archive/**/*.xcarchive
+      - build/**/**/*.ipa
+
