@@ -2,19 +2,17 @@ workflows:
   ios-release-build:
     name: iOS Release Build
     environment:
-      groups:
-        - ios_signing_group
       vars:
         BUNDLE_ID: "com.perfex.admin"
-        CERTIFICATE_PASSWORD: "debbere"
+        CERTIFICATE_PASSWORD: $CERTIFICATE_PASSWORD
+      groups:
+        - ios_signing_group
       ios_signing:
-        certificates:
-          - certificate: $P12_BASE64
-            password: $CERTIFICATE_PASSWORD
-            type: distribution
-        provisioning_profiles:
-          - provisioning_profile: $MOBILEPROVISION_BASE64
-            type: ad_hoc
+        certificate_base64: $P12_BASE64
+        certificate_password: $CERTIFICATE_PASSWORD
+        provisioning_profile_base64: $MOBILEPROVISION_BASE64
+        profile_reference: Horizone_AdHoc_Profile
+        target: Runner
     scripts:
       - name: Install dependencies
         script: |
