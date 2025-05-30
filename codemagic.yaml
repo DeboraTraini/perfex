@@ -4,16 +4,14 @@ workflows:
     environment:
       ios_signing:
         certificates:
-          - certificate_id: "IOS"
-            certificate_password: "debbere"
-            team_id: "R4E788FTQJ"
-            target: "Runner"
+          - certificate_id: IOS          # <-- Nome del certificato p12 caricato
+            certificate_password: debbere             # <-- Password del file .p12
         provisioning_profiles:
-          - name: "Horizone_AdHoc_Profile"
-            bundle_id: "com.perfex.admin"
-            target: "Runner"
+          - profile_reference: Horizone_AdHoc_Profile # <-- Nome esatto del provisioning profile caricato
+            bundle_id: com.perfex.admin               # <-- Bundle ID della tua app iOS
+            target: Runner                            # <-- Nome del target Xcode (di solito "Runner")
     scripts:
-      - name: Get dependencies
+      - name: Install dependencies
         script: |
           flutter pub get
       - name: Build IPA
@@ -21,3 +19,4 @@ workflows:
           flutter build ipa --release
     artifacts:
       - build/ios/ipa/*.ipa
+
