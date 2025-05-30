@@ -1,36 +1,32 @@
 workflows:
   ios-release-build:
     name: iOS Release Build
-    max_build_duration: 60
     environment:
-      vars:
-        BUNDLE_ID: com.perfex.admin      # <-- SOSTITUISCI con il tuo vero Bundle ID
       flutter: stable
       xcode: latest
-      cocoapods: default
+      vars:
+        BUNDLE_ID: com.perfex.admin
+        CERTIFICATE_PASSWORD: debbere
       ios_signing:
-        certificates:
-          - certificate: ios_distribution.p12
-            password: "debbere"  # <-- SOSTITUISCI con la password .p12
-            name: ios
-            type: distribution
-            source: file
-            group: debug
-            filePath: certificates/ios_distribution.p12
-        provisioning_profiles:
-          - name: ios_provisioning_profile
-            type: ad-hoc
-            source: file
-            group: debug
-            filePath: profiles/Horizone_AdHocmobileprovision.mobileprovision
-    triggering:
-      events:
-        - push
+        certificate: ios  # <- nome esatto caricato su Codemagic
+        certificate_password: debbere
+        provisioning_profile: Horizone_AdHoc_Profile # <- nome esatto caricato su Codemagic
+
     scripts:
-      - name: Build IPA
+      - name: Clean build
         script: |
           flutter clean
+      - name: Get packages
+        script: |
           flutter pub get
-          flutter build ios --release --no-codesign
+      - name: Build iOS release
+        script: |
+          flutter build ipa --release
+
     artifacts:
       - build/ios/ipa/*.ipa
+
+    publishing:
+      email:
+        recipients:
+          - deboratraini@gmail.com
