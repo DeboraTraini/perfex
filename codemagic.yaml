@@ -2,24 +2,23 @@ workflows:
   ios-release-build:
     name: iOS Release Build
     environment:
+      flutter: stable
+      xcode: latest
       vars:
         BUNDLE_ID: "com.perfex.admin"
+        CERTIFICATE_PASSWORD: "debbere"
       ios_signing:
         certificates:
           - certificate: $IOS_CERTIFICATE
             password: $CERTIFICATE_PASSWORD
-            type: distribution
         provisioning_profiles:
-          - name: Horizone_AdHoc_Profile
-            profile: $IOS_PROVISIONING_PROFILE
-            type: ad-hoc
-            bundle_id: "com.perfex.admin"
+          - profile: $IOS_PROVISIONING_PROFILE
     scripts:
       - name: Install dependencies
         script: |
           flutter pub get
       - name: Build IPA
         script: |
-          flutter build ios --release
+          flutter build ipa --export-options-plist=ios/ExportOptions.plist
     artifacts:
       - build/ios/ipa/*.ipa
