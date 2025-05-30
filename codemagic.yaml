@@ -4,11 +4,11 @@ workflows:
     environment:
       ios_signing:
         certificates:
-          - certificate_id: IOS # es: ios_distribution_cert
+          - certificate_id: ios
             certificate_password: debbere
         provisioning_profiles:
-          - profile_reference: Horizone_AdHoc_Profile  # es: Horizone_Admin_Profile
-            bundle_id: com.perfex.admin                   # bundle ID esatto registrato su Apple
+          - profile_reference: Horizone_AdHoc_Profile
+            bundle_id: com.perfex.admin
             target: Runner
     scripts:
       - name: Install dependencies
