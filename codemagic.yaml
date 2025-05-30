@@ -4,7 +4,7 @@ workflows:
     environment:
       ios_signing:
         certificates:
-          - certificate_id: "INSERISCI_L_ID_DEL_CERTIFICATO_P12"
+          - certificate_id: "IOS"
             certificate_password: "debbere"
             # 🔽 Collega al target Runner qui sotto
             target: "Runner"
